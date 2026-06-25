@@ -15,6 +15,31 @@ Predict product prices using multiple modalities:
 
 This project explores whether multimodal learning improves price prediction compared to a text-only baseline.
 
+## 🚀 Development Timeline
+
+| Phase | Status | Description |
+|-------|--------|-------------|
+| Phase 1 | ✅ Completed | Data preprocessing, exploratory data analysis, TF-IDF text baseline |
+| Phase 2 | ✅ Completed | EfficientNetB0 image feature extraction and notebook refactoring |
+| Phase 3 | ✅ Completed | Multimodal feature fusion, model training, evaluation and comparison |
+| Phase 4 | ⏳ Planned | Model optimization and feature engineering |
+| Phase 5 | ⏳ Planned | Streamlit web application |
+| Phase 6 | ⏳ Planned | Deployment and final polishing |
+
+```
+Phase 1 ✅
+      ↓
+Phase 2 ✅
+      ↓
+Phase 3 ✅
+      ↓
+Phase 4 ⏳
+      ↓
+Phase 5 ⏳
+      ↓
+Phase 6 ⏳
+```
+
 ## 2. Features
 
 - Text preprocessing
