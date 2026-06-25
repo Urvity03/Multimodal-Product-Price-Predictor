@@ -1,0 +1,56 @@
+.venv/
+mlenv/
+
+__pycache__/
+.ipynb_checkpoints/
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+
+# Environment
+*.env
+*.env.*
+
+# Models
+*.h5
+*.hdf5
+*.ckpt
+*.pt
+*.pth
+*.sav
+*.joblib
+*.pkl
+*.pickle
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Archives
+*.zip
+*.tar.gz
+*.tar
+*.tgz
+*.7z
+*.rar
+
+# Logs
+*.log
+
+# Data
+*.csv
+*.tsv
+*.json
+*.parquet
+*.feather
+
+# Ignore project data and generated files
+data/
+outputs/
+
+# OS / IDE
+.DS_Store
+.vscode/
