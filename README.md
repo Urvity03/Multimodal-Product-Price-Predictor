@@ -1,29 +1,130 @@
 # Multimodal Product Price Predictor
 
-## Problem Statement
+[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
+[![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-green)](https://scikit-learn.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-f37626)](https://jupyter.org/)
 
-Build a machine learning solution to predict product prices using multimodal inputs, including product images and product descriptions. The model should combine visual and textual features to improve pricing accuracy for e-commerce products.
+## 1. Project Overview
 
-## Planned Architecture
+Predict product prices using multiple modalities:
 
-- `data/raw/` - store raw datasets and source assets
-- `data/processed/` - store cleaned and preprocessed datasets
-- `data/images/` - store product images for feature extraction
-- `src/data_preprocessing.py` - data cleaning and preprocessing utilities
-- `src/image_features.py` - image feature extraction and embedding generation
-- `src/text_features.py` - text feature extraction and embedding generation
-- `src/train.py` - model training pipeline and evaluation
-- `src/predict.py` - inference utilities and prediction pipeline
-- `app/app.py` - application entrypoint for serving predictions
-- `models/` - store trained model artifacts
-- `outputs/plots/` - visualizations and charts
-- `outputs/reports/` - evaluation reports and summaries
+- Product text
+- Product images
+- Structured product information
 
-## Tech Stack
+This project explores whether multimodal learning improves price prediction compared to a text-only baseline.
 
-- Python 3.x
-- pandas, NumPy, scikit-learn
-- PyTorch or TensorFlow
-- OpenCV / Pillow
-- Jupyter Notebooks
-- Flask or FastAPI
+## 2. Features
+
+- Text preprocessing
+- TF-IDF feature extraction
+- EfficientNetB0 image embeddings
+- Multimodal feature fusion
+- Regression model training
+- Model evaluation
+- Performance comparison
+- Modular notebook workflow
+
+## 3. Project Structure
+
+```
+app/
+data/
+notebooks/
+    01_data_understanding.ipynb
+    02_eda.ipynb
+    03_text_baseline.ipynb
+    04_image_feature_extraction.ipynb
+    05_multimodal_model.ipynb
+src/
+README.md
+requirements.txt
+```
+
+## 4. Workflow
+
+```mermaid
+flowchart LR
+    A[Dataset]
+    B[Text Preprocessing]
+    C[TF-IDF]
+    D[EfficientNetB0]
+    E[Image Embeddings]
+    F[Feature Fusion]
+    G[Regression Model]
+    H[Evaluation]
+
+    A --> B
+    B --> C
+    A --> D
+    D --> E
+    C --> F
+    E --> F
+    F --> G
+    G --> H
+```
+
+## 5. Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- TensorFlow
+- EfficientNetB0
+- XGBoost
+- Matplotlib
+- Jupyter Notebook
+
+## 6. Notebook Pipeline
+
+- `01_data_understanding.ipynb` — Dataset understanding
+- `02_eda.ipynb` — Exploratory Data Analysis
+- `03_text_baseline.ipynb` — Text baseline
+- `04_image_feature_extraction.ipynb` — Image feature extraction
+- `05_multimodal_model.ipynb` — Multimodal model
+
+## 7. Results
+
+| Model         | MAE     | RMSE    | R²      |
+|--------------|---------|---------|---------|
+| Text Baseline | 14.0354 | 33.3573 | 0.0858 |
+| Multimodal    | 14.0555 | 33.1946 | 0.0947 |
+
+## 8. Key Findings
+
+- Text features contained most of the pricing signal.
+- Image embeddings provided only marginal improvements.
+- Multimodal learning does not always outperform unimodal approaches.
+- Future work includes better feature engineering and model tuning.
+
+## 9. Future Improvements
+
+- Hyperparameter tuning
+- Structured feature extraction
+- Better multimodal fusion
+- Streamlit deployment
+- Model explainability (SHAP)
+
+## 10. Installation
+
+```bash
+git clone https://github.com/your-username/Multimodal-Product-Price-Predictor.git
+cd Multimodal-Product-Price-Predictor
+pip install -r requirements.txt
+```
+
+## 11. Run
+
+Open the notebooks in Jupyter and run them in order:
+
+1. `01_data_understanding.ipynb`
+2. `02_eda.ipynb`
+3. `03_text_baseline.ipynb`
+4. `04_image_feature_extraction.ipynb`
+5. `05_multimodal_model.ipynb`
+
+## 12. License
+
+MIT License
