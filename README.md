@@ -26,19 +26,6 @@ This project explores whether multimodal learning improves price prediction comp
 | Phase 5 | ⏳ Planned | Streamlit web application |
 | Phase 6 | ⏳ Planned | Deployment and final polishing |
 
-```
-Phase 1 ✅
-      ↓
-Phase 2 ✅
-      ↓
-Phase 3 ✅
-      ↓
-Phase 4 ⏳
-      ↓
-Phase 5 ⏳
-      ↓
-Phase 6 ⏳
-```
 
 ## 2. Features
 
