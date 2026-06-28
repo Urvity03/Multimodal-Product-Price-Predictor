@@ -7,40 +7,46 @@
 
 ## 1. Project Overview
 
-Predict product prices using multiple modalities:
+Predict product prices using **multiple modalities**:
 
-- Product text
-- Product images
-- Structured product information
+* 📝 Product text
+* 🖼️ Product images
+* 📦 Structured product information
 
-This project explores whether multimodal learning improves price prediction compared to a text-only baseline.
+This project investigates whether combining textual, visual, and structured features can improve product price prediction compared to a traditional text-only approach.
+
+---
 
 ## 🚀 Development Timeline
 
-| Phase | Status | Description |
-|-------|--------|-------------|
-| Phase 1 | ✅ Completed | Data preprocessing, exploratory data analysis, TF-IDF text baseline |
-| Phase 2 | ✅ Completed | EfficientNetB0 image feature extraction and notebook refactoring |
-| Phase 3 | ✅ Completed | Multimodal feature fusion, model training, evaluation and comparison |
-| Phase 4 | ⏳ Planned | Model optimization and feature engineering |
-| Phase 5 | ⏳ Planned | Streamlit web application |
-| Phase 6 | ⏳ Planned | Deployment and final polishing |
+| Phase   | Status      | Description                                                            |
+| ------- | ----------- | ---------------------------------------------------------------------- |
+| Phase 1 | ✅ Completed | Data preprocessing, exploratory data analysis and TF-IDF text baseline |
+| Phase 2 | ✅ Completed | EfficientNetB0 image feature extraction                                |
+| Phase 3 | ✅ Completed | Multimodal feature fusion, model training and evaluation               |
+| Phase 4 | ✅ Completed | Model optimization and structured feature engineering                  |
+| Phase 5 | ⏳ Planned   | Streamlit web application                                              |
+| Phase 6 | ⏳ Planned   | Cloud deployment and project polishing                                 |
 
+---
 
 ## 2. Features
 
-- Text preprocessing
-- TF-IDF feature extraction
-- EfficientNetB0 image embeddings
-- Multimodal feature fusion
-- Regression model training
-- Model evaluation
-- Performance comparison
-- Modular notebook workflow
+* Text preprocessing
+* TF-IDF feature extraction
+* EfficientNetB0 image embeddings
+* Structured feature engineering
+* Multimodal feature fusion
+* XGBoost regression
+* Model optimization
+* Performance comparison
+* Modular notebook workflow
+
+---
 
 ## 3. Project Structure
 
-```
+```text
 app/
 data/
 notebooks/
@@ -49,10 +55,13 @@ notebooks/
     03_text_baseline.ipynb
     04_image_feature_extraction.ipynb
     05_multimodal_model.ipynb
+    06_model_optimization.ipynb
 src/
 README.md
 requirements.txt
 ```
+
+---
 
 ## 4. Workflow
 
@@ -63,80 +72,109 @@ flowchart LR
     C[TF-IDF]
     D[EfficientNetB0]
     E[Image Embeddings]
-    F[Feature Fusion]
-    G[Regression Model]
-    H[Evaluation]
+    F[Structured Features]
+    G[Feature Fusion]
+    H[XGBoost Regressor]
+    I[Evaluation]
 
     A --> B
     B --> C
     A --> D
     D --> E
-    C --> F
-    E --> F
+    B --> F
+    C --> G
+    E --> G
     F --> G
     G --> H
+    H --> I
 ```
+
+---
 
 ## 5. Technologies Used
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- TensorFlow
-- EfficientNetB0
-- XGBoost
-- Matplotlib
-- Jupyter Notebook
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* TensorFlow / Keras
+* EfficientNetB0
+* XGBoost
+* Matplotlib
+* SciPy
+* Jupyter Notebook
+
+---
 
 ## 6. Notebook Pipeline
 
-- `01_data_understanding.ipynb` — Dataset understanding
-- `02_eda.ipynb` — Exploratory Data Analysis
-- `03_text_baseline.ipynb` — Text baseline
-- `04_image_feature_extraction.ipynb` — Image feature extraction
-- `05_multimodal_model.ipynb` — Multimodal model
+| Notebook                            | Description                                     |
+| ----------------------------------- | ----------------------------------------------- |
+| `01_data_understanding.ipynb`       | Dataset understanding                           |
+| `02_eda.ipynb`                      | Exploratory Data Analysis                       |
+| `03_text_baseline.ipynb`            | TF-IDF text baseline model                      |
+| `04_image_feature_extraction.ipynb` | EfficientNetB0 image embeddings                 |
+| `05_multimodal_model.ipynb`         | Text + Image multimodal model                   |
+| `06_model_optimization.ipynb`       | Structured features and optimized XGBoost model |
+
+---
 
 ## 7. Results
 
-| Model         | MAE     | RMSE    | R²      |
-|--------------|---------|---------|---------|
-| Text Baseline | 14.0354 | 33.3573 | 0.0858 |
-| Multimodal    | 14.0555 | 33.1946 | 0.0947 |
+| Model                |         MAE |        RMSE |         R² |
+| -------------------- | ----------: | ----------: | ---------: |
+| Text Baseline        | **14.0354** | **33.3573** | **0.0858** |
+| Multimodal           | **14.0555** | **33.1946** | **0.0947** |
+| Optimized Multimodal | **13.8603** | **33.2399** | **0.0922** |
+
+---
 
 ## 8. Key Findings
 
-- Text features contained most of the pricing signal.
-- Image embeddings provided only marginal improvements.
-- Multimodal learning does not always outperform unimodal approaches.
-- Future work includes better feature engineering and model tuning.
+* Product text contains the strongest pricing signal.
+* EfficientNetB0 image embeddings provide complementary information.
+* Structured features (weight, pack size, etc.) further improve prediction quality.
+* Combining multiple feature types creates a robust end-to-end multimodal pipeline.
+* The optimized model achieved the lowest MAE among all experiments.
+
+---
 
 ## 9. Future Improvements
 
-- Hyperparameter tuning
-- Structured feature extraction
-- Better multimodal fusion
-- Streamlit deployment
-- Model explainability (SHAP)
+* Deploy using Streamlit
+* Cloud deployment (Streamlit Community Cloud / Hugging Face Spaces)
+* Transformer-based text embeddings (Sentence-BERT)
+* Vision Transformer (ViT) or CLIP image embeddings
+* SHAP-based model explainability
+* Hyperparameter optimization using Optuna
+
+---
 
 ## 10. Installation
 
 ```bash
-git clone https://github.com/your-username/Multimodal-Product-Price-Predictor.git
+git clone https://github.com/Urvity03/Multimodal-Product-Price-Predictor.git
+
 cd Multimodal-Product-Price-Predictor
+
 pip install -r requirements.txt
 ```
 
+---
+
 ## 11. Run
 
-Open the notebooks in Jupyter and run them in order:
+Run the notebooks in the following order:
 
 1. `01_data_understanding.ipynb`
 2. `02_eda.ipynb`
 3. `03_text_baseline.ipynb`
 4. `04_image_feature_extraction.ipynb`
 5. `05_multimodal_model.ipynb`
+6. `06_model_optimization.ipynb`
+
+---
 
 ## 12. License
 
-MIT License
+This project is licensed under the **MIT License**.
