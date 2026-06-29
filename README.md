@@ -1,180 +1,86 @@
-# Multimodal Product Price Predictor
+# PriceVision AI
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
-[![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.3-green)](https://scikit-learn.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-f37626)](https://jupyter.org/)
+PriceVision AI is a portfolio-grade multimodal product pricing application. It
+combines product descriptions, product imagery, and structured package signals
+to generate a model-based USD price estimate with an approximate INR conversion
+and a downloadable PDF report.
 
-## 1. Project Overview
+## Product experience
 
-Predict product prices using **multiple modalities**:
+- Premium, responsive Streamlit interface
+- Validated description and image upload workflow
+- Real-time progress and persistent results dashboard
+- USD prediction and approximate INR conversion
+- Input summary, model metadata, and local PDF report generation
+- Lazy-loaded, cached model components
 
-* 📝 Product text
-* 🖼️ Product images
-* 📦 Structured product information
-
-This project investigates whether combining textual, visual, and structured features can improve product price prediction compared to a traditional text-only approach.
-
----
-
-## 🚀 Development Timeline
-
-| Phase   | Status      | Description                                                            |
-| ------- | ----------- | ---------------------------------------------------------------------- |
-| Phase 1 | ✅ Completed | Data preprocessing, exploratory data analysis and TF-IDF text baseline |
-| Phase 2 | ✅ Completed | EfficientNetB0 image feature extraction                                |
-| Phase 3 | ✅ Completed | Multimodal feature fusion, model training and evaluation               |
-| Phase 4 | ✅ Completed | Model optimization and structured feature engineering                  |
-| Phase 5 | ⏳ Planned   | Streamlit web application                                              |
-| Phase 6 | ⏳ Planned   | Cloud deployment and project polishing                                 |
-
----
-
-## 2. Features
-
-* Text preprocessing
-* TF-IDF feature extraction
-* EfficientNetB0 image embeddings
-* Structured feature engineering
-* Multimodal feature fusion
-* XGBoost regression
-* Model optimization
-* Performance comparison
-* Modular notebook workflow
-
----
-
-## 3. Project Structure
+## Inference architecture
 
 ```text
-app/
-data/
-notebooks/
-    01_data_understanding.ipynb
-    02_eda.ipynb
-    03_text_baseline.ipynb
-    04_image_feature_extraction.ipynb
-    05_multimodal_model.ipynb
-    06_model_optimization.ipynb
-src/
-README.md
-requirements.txt
+Product description --> TF-IDF (50,000)
+Product image -------> EfficientNetB0 (1,280)
+Description ---------> Weight + pack size (2)
+                                  |
+                                  v
+                    51,282 fused features
+                                  |
+                                  v
+                     Optimized XGBoost model
+                                  |
+                                  v
+                         USD price estimate
 ```
 
----
+The trained XGBoost regressor is preserved. The original notebook did not save
+its fitted TF-IDF vectorizer, so the application deterministically reconstructs
+the vocabulary from the original ordered `sample_5000.csv` corpus on first use.
+That cached vectorizer recreates the exact 50,000-feature contract expected by
+the model; the price model itself is not retrained.
 
-## 4. Workflow
+## Project structure
 
-```mermaid
-flowchart LR
-    A[Dataset]
-    B[Text Preprocessing]
-    C[TF-IDF]
-    D[EfficientNetB0]
-    E[Image Embeddings]
-    F[Structured Features]
-    G[Feature Fusion]
-    H[XGBoost Regressor]
-    I[Evaluation]
-
-    A --> B
-    B --> C
-    A --> D
-    D --> E
-    B --> F
-    C --> G
-    E --> G
-    F --> G
-    G --> H
-    H --> I
+```text
+app/          Streamlit entry point
+assets/       Local logo and hero artwork
+backend/      Model loading, preprocessing, inference, and report generation
+components/   Reusable interface sections
+data/         Preserved model, corpus, and local datasets
+notebooks/    Research and model development workflow
+src/          Original experimentation utilities
+styles/       Central responsive design system
 ```
 
----
+## Run locally
 
-## 5. Technologies Used
-
-* Python
-* Pandas
-* NumPy
-* Scikit-learn
-* TensorFlow / Keras
-* EfficientNetB0
-* XGBoost
-* Matplotlib
-* SciPy
-* Jupyter Notebook
-
----
-
-## 6. Notebook Pipeline
-
-| Notebook                            | Description                                     |
-| ----------------------------------- | ----------------------------------------------- |
-| `01_data_understanding.ipynb`       | Dataset understanding                           |
-| `02_eda.ipynb`                      | Exploratory Data Analysis                       |
-| `03_text_baseline.ipynb`            | TF-IDF text baseline model                      |
-| `04_image_feature_extraction.ipynb` | EfficientNetB0 image embeddings                 |
-| `05_multimodal_model.ipynb`         | Text + Image multimodal model                   |
-| `06_model_optimization.ipynb`       | Structured features and optimized XGBoost model |
-
----
-
-## 7. Results
-
-| Model                |         MAE |        RMSE |         R² |
-| -------------------- | ----------: | ----------: | ---------: |
-| Text Baseline        | **14.0354** | **33.3573** | **0.0858** |
-| Multimodal           | **14.0555** | **33.1946** | **0.0947** |
-| Optimized Multimodal | **13.8603** | **33.2399** | **0.0922** |
-
----
-
-## 8. Key Findings
-
-* Product text contains the strongest pricing signal.
-* EfficientNetB0 image embeddings provide complementary information.
-* Structured features (weight, pack size, etc.) further improve prediction quality.
-* Combining multiple feature types creates a robust end-to-end multimodal pipeline.
-* The optimized model achieved the lowest MAE among all experiments.
-
----
-
-## 9. Future Improvements
-
-* Deploy using Streamlit
-* Cloud deployment (Streamlit Community Cloud / Hugging Face Spaces)
-* Transformer-based text embeddings (Sentence-BERT)
-* Vision Transformer (ViT) or CLIP image embeddings
-* SHAP-based model explainability
-* Hyperparameter optimization using Optuna
-
----
-
-## 10. Installation
+Use Python 3.11 in a virtual environment:
 
 ```bash
-git clone https://github.com/Urvity03/Multimodal-Product-Price-Predictor.git
-
-cd Multimodal-Product-Price-Predictor
-
 pip install -r requirements.txt
+streamlit run app/app.py
 ```
 
----
+The first prediction can take longer while EfficientNetB0 and the TF-IDF
+vocabulary initialize. Subsequent predictions reuse cached resources.
 
-## 11. Run
+## Model
 
-Run the notebooks in the following order:
+| Component | Role |
+| --- | --- |
+| TF-IDF | Product language features |
+| EfficientNetB0 | Visual embeddings |
+| Regex feature extraction | Weight and pack size |
+| XGBoost | Final log-price regression |
 
-1. `01_data_understanding.ipynb`
-2. `02_eda.ipynb`
-3. `03_text_baseline.ipynb`
-4. `04_image_feature_extraction.ipynb`
-5. `05_multimodal_model.ipynb`
-6. `06_model_optimization.ipynb`
+Notebook evaluation recorded an MAE of **13.8603** for the optimized multimodal
+model. Predictions are estimates for decision support and may differ from real
+market prices.
 
----
+## Tech stack
 
-## 12. License
+Python, Streamlit, TensorFlow/Keras, EfficientNetB0, scikit-learn, SciPy,
+XGBoost, and Pillow
 
-This project is licensed under the **MIT License**.
+## Developer
+
+Built by [Urvity](https://github.com/Urvity03). Source:
+[Multimodal Product Price Predictor](https://github.com/Urvity03/Multimodal-Product-Price-Predictor).
