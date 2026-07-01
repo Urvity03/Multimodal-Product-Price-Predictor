@@ -25,7 +25,7 @@ Estimate product prices using product descriptions, images, and structured produ
 
 🌐 **Experience PriceVision AI**
 
-👉 **https://YOUR-STREAMLIT-APP.streamlit.app**
+👉 **https://multimodal-price-predictor.streamlit.app/**
 
 ---
 
