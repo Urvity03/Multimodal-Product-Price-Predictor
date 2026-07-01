@@ -1,3 +1,4 @@
+
 # PriceVision AI
 
 <p align="center">
@@ -5,7 +6,7 @@
 </p>
 
 <p align="center">
-Estimate product prices using product descriptions, images, and structured attributes through a multimodal machine learning pipeline.
+Estimate product prices using product descriptions, images, and structured product attributes through a multimodal machine learning pipeline.
 </p>
 
 <p align="center">
@@ -14,62 +15,75 @@ Estimate product prices using product descriptions, images, and structured attri
 ![Streamlit](https://img.shields.io/badge/Streamlit-red?style=flat-square&logo=streamlit)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=flat-square&logo=tensorflow)
 ![XGBoost](https://img.shields.io/badge/XGBoost-green?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Live-success?style=flat-square)
 
 </p>
 
 ---
 
+# 🚀 Live Demo
+
+🌐 **Experience PriceVision AI**
+
+👉 **https://YOUR-STREAMLIT-APP.streamlit.app**
+
+---
+
 ## Overview
 
-PriceVision AI is a multimodal machine learning application that estimates product prices by combining Natural Language Processing (NLP), Computer Vision, and structured product attributes.
+PriceVision AI is a multimodal machine learning application that estimates product prices by combining **Natural Language Processing (NLP)**, **Computer Vision**, and **structured product attributes**.
 
 The application analyzes:
 
-- Product descriptions
-- Product images
-- Structured product attributes
+- 📝 Product descriptions
+- 🖼️ Product images
+- 📦 Structured product attributes
 
-to generate an **Estimated Market Price (USD)** along with an approximate **INR conversion** and a downloadable **PDF report**.
+to generate:
+
+- 💵 Estimated Market Price (USD)
+- 🇮🇳 Approximate INR Conversion
+- 📄 Downloadable PDF Report
 
 ---
 
 ## Key Highlights
 
-- Multimodal AI price estimation
-- TF-IDF text feature extraction (50,000 features)
-- EfficientNetB0 image embeddings (1,280 features)
-- Structured feature engineering
-- 51,282-dimensional feature fusion
-- Optimized XGBoost regression model
-- Estimated Market Price (USD)
-- Approximate INR conversion
-- PDF report generation
-- Responsive Streamlit interface
-- Cached inference for improved performance
+- 🤖 Multimodal AI price estimation
+- 📝 TF-IDF text feature extraction (50,000 features)
+- 🖼️ EfficientNetB0 image embeddings (1,280 features)
+- 📦 Structured feature engineering
+- 🔀 51,282-dimensional feature fusion
+- 📈 Optimized XGBoost regression model
+- 💵 Estimated Market Price (USD)
+- 🇮🇳 Approximate INR conversion
+- 📄 PDF report generation
+- 🎨 Modern responsive Streamlit interface
+- ⚡ Cached inference for faster predictions
 
 ---
 
-# Application Preview
+# 📸 Application Preview
 
-### Home Page
+## Home Page
 
 ![Home](screenshots/home.png)
 
 ---
 
-### Prediction Workspace
+## Prediction Workspace
 
 ![Prediction Workspace](screenshots/prediction-workspace.png)
 
 ---
 
-### Results Dashboard
+## Results Dashboard
 
 ![Results Dashboard](screenshots/results-dashboard.png)
 
 ---
 
-## Model Architecture
+# 🏗️ Model Architecture
 
 ```text
                  Product Description
@@ -97,7 +111,7 @@ Structured Attributes
 
 ---
 
-## Project Structure
+# 📁 Project Structure
 
 ```text
 PriceVision-AI
@@ -117,7 +131,7 @@ PriceVision-AI
 
 ---
 
-## Technology Stack
+# 🛠️ Technology Stack
 
 | Category | Technology |
 |-----------|------------|
@@ -132,7 +146,7 @@ PriceVision-AI
 
 ---
 
-## Installation
+# ⚙️ Installation
 
 Clone the repository.
 
@@ -162,7 +176,7 @@ streamlit run app/app.py
 
 ---
 
-## Model
+# 🧠 Model
 
 | Component | Purpose |
 |-----------|---------|
@@ -175,17 +189,15 @@ The deployed application reconstructs the TF-IDF vocabulary deterministically fr
 
 ---
 
-## Prediction Scope
+# 📌 Prediction Scope
 
-This model was trained on a broad e-commerce dataset.
+This model was trained on a broad e-commerce dataset comprising approximately **5,000 curated products**.
 
-Predictions are generally more reliable for products similar to those represented in the training data. Estimates for premium, newly released, or rare products may be less accurate.
-
-The deployed model was trained on approximately **5,000 curated e-commerce products** combining product descriptions, images, and structured attributes.
+Predictions are intended to provide intelligent market estimates based on product descriptions, images, and structured attributes. While the model performs well for products similar to those represented in the training data, estimates for premium, newly released, or niche products may vary due to limited training coverage.
 
 ---
 
-## Performance
+# 📊 Performance
 
 | Metric | Value |
 |--------|------:|
@@ -193,47 +205,50 @@ The deployed model was trained on approximately **5,000 curated e-commerce produ
 | Mean Absolute Error (MAE) | **13.86** |
 | Output | Estimated Market Price (USD) |
 
-Predictions are intended as intelligent market estimates rather than exact retail prices.
+> **Note:** Predictions are intended as intelligent market estimates rather than exact retail prices.
 
 ---
 
-## Future Improvements
+# 🚀 Future Improvements
 
 - Category-specific pricing models
 - Brand-aware feature engineering
-- Live exchange-rate integration
+- Larger multimodal training datasets
+- Confidence estimation for predictions
 - Multi-currency support
-- Confidence calibration
-- Cloud deployment
-- Training on larger multimodal datasets
+- Live exchange-rate integration
+- Model explainability (SHAP/LIME)
+- Performance optimization and MLOps integration
 
 ---
 
-## Developer
+# 👩‍💻 Developer
 
 **Urvi Tyagi**
 
-B.Tech – Artificial Intelligence & Machine Learning
+**B.Tech – Artificial Intelligence & Machine Learning**
 
 - GitHub: https://github.com/Urvity03
 - LinkedIn: https://www.linkedin.com/in/urvi-tyagi-17b302286/
 
-Project Repository:
+**Project Repository**
 
 https://github.com/Urvity03/Multimodal-Product-Price-Predictor
 
 ---
 
-## Contributing
+# 🤝 Contributing
 
-Contributions, suggestions, and feedback are welcome. Feel free to open an issue or submit a pull request.
+Contributions, suggestions, and feedback are welcome.
+
+Feel free to open an issue or submit a pull request.
 
 ---
 
-## License
+# 📄 License
 
 This project is licensed under the MIT License.
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub.
+⭐ **If you found this project useful, consider giving it a star on GitHub!**
