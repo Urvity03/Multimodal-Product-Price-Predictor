@@ -21,11 +21,11 @@ Estimate product prices using product descriptions, images, and structured produ
 
 ---
 
-# 🚀 Live Demo
+#  Live Demo
 
-🌐 **Experience PriceVision AI**
+ **Experience PriceVision AI**
 
-👉 **https://multimodal-price-predictor.streamlit.app/**
+ **https://multimodal-price-predictor.streamlit.app/**
 
 ---
 
@@ -35,31 +35,31 @@ PriceVision AI is a multimodal machine learning application that estimates produ
 
 The application analyzes:
 
-- 📝 Product descriptions
-- 🖼️ Product images
-- 📦 Structured product attributes
+- Product descriptions
+- Product images
+- Structured product attributes
 
 to generate:
 
-- 💵 Estimated Market Price (USD)
+- Estimated Market Price (USD)
 - 🇮🇳 Approximate INR Conversion
-- 📄 Downloadable PDF Report
+- Downloadable PDF Report
 
 ---
 
 ## Key Highlights
 
-- 🤖 Multimodal AI price estimation
-- 📝 TF-IDF text feature extraction (50,000 features)
-- 🖼️ EfficientNetB0 image embeddings (1,280 features)
-- 📦 Structured feature engineering
-- 🔀 51,282-dimensional feature fusion
-- 📈 Optimized XGBoost regression model
-- 💵 Estimated Market Price (USD)
+-  Multimodal AI price estimation
+-  TF-IDF text feature extraction (50,000 features)
+-  EfficientNetB0 image embeddings (1,280 features)
+-  Structured feature engineering
+-  51,282-dimensional feature fusion
+-  Optimized XGBoost regression model
+-  Estimated Market Price (USD)
 - 🇮🇳 Approximate INR conversion
-- 📄 PDF report generation
-- 🎨 Modern responsive Streamlit interface
-- ⚡ Cached inference for faster predictions
+-  PDF report generation
+-  Modern responsive Streamlit interface
+-  Cached inference for faster predictions
 
 ---
 
@@ -83,7 +83,7 @@ to generate:
 
 ---
 
-# 🏗️ Model Architecture
+# Model Architecture
 
 ```text
                  Product Description
@@ -111,7 +111,7 @@ Structured Attributes
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```text
 PriceVision-AI
@@ -176,7 +176,7 @@ streamlit run app/app.py
 
 ---
 
-# 🧠 Model
+# Model
 
 | Component | Purpose |
 |-----------|---------|
@@ -189,7 +189,7 @@ The deployed application reconstructs the TF-IDF vocabulary deterministically fr
 
 ---
 
-# 📌 Prediction Scope
+# Prediction Scope
 
 This model was trained on a broad e-commerce dataset comprising approximately **5,000 curated products**.
 
@@ -197,7 +197,7 @@ Predictions are intended to provide intelligent market estimates based on produc
 
 ---
 
-# 📊 Performance
+# Performance
 
 | Metric | Value |
 |--------|------:|
@@ -209,7 +209,7 @@ Predictions are intended to provide intelligent market estimates based on produc
 
 ---
 
-# 🚀 Future Improvements
+# Future Improvements
 
 - Category-specific pricing models
 - Brand-aware feature engineering
@@ -222,7 +222,7 @@ Predictions are intended to provide intelligent market estimates based on produc
 
 ---
 
-# 👩‍💻 Developer
+# Developer
 
 **Urvi Tyagi**
 
@@ -237,7 +237,7 @@ https://github.com/Urvity03/Multimodal-Product-Price-Predictor
 
 ---
 
-# 🤝 Contributing
+# Contributing
 
 Contributions, suggestions, and feedback are welcome.
 
@@ -245,7 +245,7 @@ Feel free to open an issue or submit a pull request.
 
 ---
 
-# 📄 License
+# License
 
 This project is licensed under the MIT License.
 
