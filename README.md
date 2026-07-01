@@ -63,7 +63,7 @@ to generate:
 
 ---
 
-# 📸 Application Preview
+# Application Preview
 
 ## Home Page
 
@@ -131,7 +131,7 @@ PriceVision-AI
 
 ---
 
-# 🛠️ Technology Stack
+# Technology Stack
 
 | Category | Technology |
 |-----------|------------|
@@ -146,7 +146,7 @@ PriceVision-AI
 
 ---
 
-# ⚙️ Installation
+# Installation
 
 Clone the repository.
 
