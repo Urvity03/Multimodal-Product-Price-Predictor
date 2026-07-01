@@ -15,12 +15,13 @@ def _render_empty_results() -> None:
     st.markdown(
         """
         <section class="results-empty" aria-label="Results preview">
-          <div>
+          <div class="empty-state-copy">
+            <div class="empty-state-icon" aria-hidden="true">$</div>
             <span>Results Dashboard</span>
-            <h2>Model output appears here after a prediction.</h2>
+            <h2>No prediction generated yet.</h2>
             <p>
-              PriceVision AI will show the USD estimate, approximate INR value,
-              model runtime, analyzed image, prediction summary, and PDF export.
+              Upload a product image and enter a detailed product description
+              to generate an AI-powered market price estimate.
             </p>
           </div>
           <div class="empty-metrics" aria-hidden="true">
@@ -63,7 +64,7 @@ def render_results() -> None:
             f"""
             <section class="result-stat result-stat-primary">
               <div class="result-stat-icon">$</div>
-              <span>Predicted Price</span>
+              <span>Estimated Market Price</span>
               <strong>${result.usd:,.2f}</strong>
               <small>USD model estimate</small>
             </section>
@@ -127,7 +128,6 @@ def render_results() -> None:
                 <div><span>Currency note</span><b>USD to indicative INR</b></div>
                 <div><span>Report</span><b>PDF export ready</b></div>
               </div>
-              <div class="model-pill">No fabricated confidence score</div>
             </section>
             """,
             unsafe_allow_html=True,
@@ -143,6 +143,28 @@ def render_results() -> None:
             width="stretch",
             type="primary",
         )
+
+    st.markdown(
+        """
+        <aside class="model-information-card" aria-labelledby="model-information-title">
+          <div class="model-information-icon" aria-hidden="true">i</div>
+          <div>
+            <h3 id="model-information-title">Model Information</h3>
+            <p>
+              This model was trained on a broad e-commerce dataset. Predictions
+              are generally more reliable for products similar to those
+              represented in the training data. Estimates for premium, newly
+              released, or rare products may be less accurate.
+            </p>
+            <footer>
+              Trained on approximately 5,000 curated e-commerce products
+              combining product descriptions, images, and structured attributes.
+            </footer>
+          </div>
+        </aside>
+        """,
+        unsafe_allow_html=True,
+    )
     st.caption(
         "The INR value is an approximate currency conversion from the "
         "predicted USD price. PriceVision AI provides estimates, not quotes."

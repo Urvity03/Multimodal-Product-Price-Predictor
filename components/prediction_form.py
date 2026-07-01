@@ -16,8 +16,16 @@ def _cached_prediction(description: str, image_bytes: bytes):
     return predict_price(description, image_bytes)
 
 
+def _begin_prediction() -> None:
+    """Lock the form before Streamlit starts the inference rerun."""
+    if not st.session_state.get("prediction_in_progress", False):
+        st.session_state["prediction_in_progress"] = True
+        st.session_state["prediction_requested"] = True
+
+
 def render_prediction_form() -> None:
     """Render input controls and store a successful result in session state."""
+    is_predicting = st.session_state.get("prediction_in_progress", False)
     st.markdown('<div id="predict"></div>', unsafe_allow_html=True)
     st.markdown(
         """
@@ -119,6 +127,8 @@ def render_prediction_form() -> None:
                 "Generate Price Estimate  ->",
                 width="stretch",
                 type="primary",
+                disabled=is_predicting,
+                on_click=_begin_prediction,
             )
             st.markdown(
                 """
@@ -129,35 +139,54 @@ def render_prediction_form() -> None:
                 unsafe_allow_html=True,
             )
 
-    if not submitted:
+    if not submitted and not st.session_state.get("prediction_requested", False):
         return
 
     st.session_state["draft_description"] = description
     if uploaded is None:
         st.error("Upload a product image to continue.", icon=":material/warning:")
+        st.session_state["prediction_in_progress"] = False
+        st.session_state["prediction_requested"] = False
         return
 
     image_bytes = uploaded.getvalue()
-    progress = st.progress(12, text="Validating product inputs...")
+    progress = st.progress(10, text="Preparing text features...")
+    status = st.status("Running the multimodal pricing pipeline...", expanded=True)
     try:
-        progress.progress(32, text="Building language features...")
-        with st.spinner("Analyzing text and visual product signals..."):
+        status.write("Preparing text features...")
+        progress.progress(28, text="Extracting image embeddings...")
+        status.write("Extracting image embeddings...")
+        progress.progress(46, text="Generating multimodal features...")
+        status.write("Generating multimodal features...")
+        progress.progress(68, text="Running XGBoost inference...")
+        status.write("Running XGBoost inference...")
+        with st.spinner("Generating market price estimate..."):
             result = _cached_prediction(description, image_bytes)
-        progress.progress(88, text="Calibrating price estimate...")
+        progress.progress(90, text="Generating market price estimate...")
+        status.write("Generating market price estimate...")
         st.session_state["prediction"] = result
         st.session_state["prediction_description"] = description.strip()
         st.session_state["prediction_image"] = image_bytes
         st.session_state["prediction_image_name"] = uploaded.name
         st.session_state["prediction_timestamp"] = current_timestamp()
         progress.progress(100, text="Prediction ready")
+        status.update(
+            label="Market price estimate ready",
+            state="complete",
+            expanded=False,
+        )
         st.toast("Price estimate generated", icon=":material/check_circle:")
     except (ValueError, ImageValidationError, ModelAssetError) as exc:
+        status.update(label="Prediction could not be completed", state="error")
         st.error(str(exc), icon=":material/warning:")
     except Exception as exc:
+        status.update(label="Prediction could not be completed", state="error")
         st.error(
             "The prediction pipeline could not complete. "
             f"Technical detail: {exc}",
             icon=":material/warning:",
         )
     finally:
+        st.session_state["prediction_in_progress"] = False
+        st.session_state["prediction_requested"] = False
         progress.empty()

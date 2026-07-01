@@ -30,16 +30,8 @@ FEATURES = (
 
 def render_features() -> None:
     """Render the premium horizontal feature strip."""
-    items = "".join(
-        f"""
-        <article class="feature-item">
-          <div class="feature-icon {icon}" aria-hidden="true"></div>
-          <div><h3>{title}</h3><p>{body}</p></div>
-        </article>
-        """
-        for icon, title, body in FEATURES
-    )
-    st.markdown(
-        f'<section class="feature-strip" aria-label="Core capabilities">{items}</section>',
-        unsafe_allow_html=True,
-    )
+    columns = st.columns(4, gap="large")
+    for column, (icon, title, body) in zip(columns, FEATURES):
+        with column:
+            st.markdown(f"#### {title}")
+            st.write(body)
