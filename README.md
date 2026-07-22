@@ -1,4 +1,3 @@
-
 # PriceVision AI
 
 <p align="center">
@@ -23,7 +22,7 @@ Estimate product prices using product descriptions, images, and structured produ
 
 #  Live Demo
 
- **Experience PriceVision AI**
+ **PriceVision AI**
 
  **https://multimodal-price-predictor.streamlit.app/**
 
